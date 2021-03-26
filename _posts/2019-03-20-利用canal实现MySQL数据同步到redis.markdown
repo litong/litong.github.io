@@ -131,7 +131,7 @@ chmod a+x run.sh
 
 ## redis根据canal返回日志更新数据
 
-GitHub源码地址：[https://github.com/litong-dev/canal2redis](https://github.com/litong-dev/canal2redis)
+GitHub源码地址：[https://github.com/litong/canal2redis](https://github.com/litong/canal2redis)
 
 ### 1. 创建一个基于Maven的Spring Boot项目。
 

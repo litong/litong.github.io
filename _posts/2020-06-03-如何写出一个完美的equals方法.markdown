@@ -1,0 +1,50 @@
+---
+layout: post
+title: "如何写出一个完美的equals方法"
+date: "2020-06-03 10:24:22 +0800"
+category: Java
+tags: Java
+---
+
+当我们设计实体类时，有一个问题总是困扰着我们，那就是如果写出一个符合Java语言规范的`equals`方法。下面是一些诀窍：
+
+1. 显式参数命名为`otherObjcet`，稍后需要将它转换成另一个叫做`other`的变量。
+
+2. 检测this与otherObject是否引用。
+
+   ```java
+   if (this == otherObject) return true;
+   ```
+
+3. 检测`otherObject`是否为`null`，如果为`null`，返回`false`。这项检测很有必要。
+
+   ```java
+   if (otherObject == null) return false;
+   ```
+
+4. 比较`this`与`otherObjcet`是否属于同一个类。如果`equals`的语义在每个子类中有所改变，就使用getClass检测。
+
+   ```java
+   if (getClass() != otherObject.getClass()) return false;
+   ```
+   如果所有的子类都拥有统一的语义，就使用instanceof检测。
+
+   ```java
+   if (!(otherObject instanceof ClassName)) return false;
+   ```
+
+5. 将`otherObject`转换为相应的类类型变量。
+
+   ```java
+   ClassName other = (ClassName) otherObject;
+   ```
+
+6. 对所有需要比较的域进行比较。使用`==`比较基本类型域，使用`equals`比较对象域。如果所有域都匹配，返回`true`；否则返回`false`。
+
+   ```java
+   return field1 == other.field1
+     && Object.equals(field2, other.field2)
+     && ...;
+   ```
+
+   如果在子类中重新定义`equals`，就要在其中包含调用`super.equals(other)`。

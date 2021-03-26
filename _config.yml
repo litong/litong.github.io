@@ -19,7 +19,7 @@ locale: zh-CN
 title: "litong's Blog"
 description: "Just Do IT."
 baseurl: ""
-url: "https://litong.github.io"
+url: "https://litong.dev"
 logo: "/images/logo.jpg"
 date_format: "%B %-d, %Y"
 read_time: true

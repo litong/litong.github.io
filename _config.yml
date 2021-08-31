@@ -89,14 +89,14 @@ defaults:
 author:
   name: litong
   picture: /images/profile-photo.png
-  email: i@litong.dev
+  email: masonlitong@gmail.com
   twitter: masonlitong
   links:
     - title: Twitter
       url: https://twitter.com/masonlitong
       icon: fab fa-twitter-square
     - title: Instagram
-      url: https://instagram.com/mason.litong
+      url: https://instagram.com/mason_litong
       icon: fab fa-instagram
     - title: GitHub
       url: https://github.com/litong
@@ -108,7 +108,7 @@ footer_links:
     url: https://twitter.com/masonlitong
     icon: fab fa-twitter-square
   - title: Instagram
-    url: https://instagram.com/mason.litong
+    url: https://instagram.com/mason_litong
     icon: fab fa-instagram
   - title: GitHub
     url: https://github.com/litong

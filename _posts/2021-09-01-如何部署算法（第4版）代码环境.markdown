@@ -1,0 +1,34 @@
+---
+layout: post
+title: "算法（第4版）环境搭建"
+date: "2021-09-01 21:50:01 +0800"
+category: Algorithms
+tags: Java Maven Algorithms
+---
+
+## 背景
+
+最近在学习Sedgewick的巨著[《算法（第4版）》](https://www.amazon.cn/dp/B07MTCTPQY)，为了更好的学习，我决定搭建一个环境测试书中所给的各种算法。
+
+## 搭建环境
+
+接下来，我们开始搭建学习所需的环境。
+
+### Fork 仓库
+
+在本书的[官网](https://algs4.cs.princeton.edu/code/)中，我们找到了本书中所包含代码的源码仓库。为了更方便我们操作，我决定Fork这个仓库。
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=kevin-wayne&repo=algs4&show_owner=true)](https://github.com/kevin-wayne/algs4)
+
+### Import project
+
+该存储库支持 Maven 或 Gradle 构建管理器。 它可以从命令行运行，也可以集成到 Eclipse、NetBeans 和 IntelliJ 中。 
+
+我这里使用的Intellij与Maven，所以以IntelliJ为例导入一个Maven项目：
+
+1. Open menu: File -> New -> Module from Existing Sources...
+2. Choose directory of algs4.
+3. Choose Import module from external model - Maven.
+4. Finish.
+
+接下来你就可以在已经导入成功的项目中更改、测试代码啦！

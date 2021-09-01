@@ -6,8 +6,6 @@ category: Algorithms
 tags: Java Maven Algorithms
 ---
 
-## 背景
-
 最近在学习Sedgewick的巨著[《算法（第4版）》](https://www.amazon.cn/dp/B07MTCTPQY)，为了更好的学习，我决定搭建一个环境测试书中所给的各种算法。
 
 ## 搭建环境
@@ -22,7 +20,7 @@ tags: Java Maven Algorithms
 
 ### Import project
 
-该存储库支持 Maven 或 Gradle 构建管理器。 它可以从命令行运行，也可以集成到 Eclipse、NetBeans 和 IntelliJ 中。 
+该存储库支持 Maven 或 Gradle 构建管理器。 它可以从命令行运行，也可以集成到 Eclipse、NetBeans 和 IntelliJ 中。
 
 我这里使用的Intellij与Maven，所以以IntelliJ为例导入一个Maven项目：
 

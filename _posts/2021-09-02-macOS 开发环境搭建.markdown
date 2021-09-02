@@ -1,0 +1,118 @@
+---
+layout: post
+title: "macOS开发环境搭建"
+date: "2021-09-02 09:22:16 +0800"
+typora-root-url: ../../Blog
+---
+
+去年三月我买了一款Mac mini作为我的开发主力机，开始使用这款被一部分开发者所赞誉的操作系统。
+
+作为一个Linux的老用户，切换到macOS给我的工作带来了某些改变，接下来，我将向大家展示一下我使用的macOS和之前使用的[Pop!_OS](https://pop.system76.com)之间的不同吧。
+
+## Pop!_OS
+
+首先向大家介绍一下Pop!\_OS吧。Pop!\_OS是一个相对来说比较小众的发行版，它是一个基于Ubuntu的衍生版本，在Ubuntu的基础上他做了一下工作：
+
+* 添加了NVIDIA图形显卡驱动，你终于不必安装完系统再自行寻找显卡驱动了！👏
+* 删除了Ubuntu上多余的、基本不会打开的预装软件。软件清单也变的清爽了起来，得益于此，系统的镜像与Ubuntu相比也缩减了不少。
+* Pop!\_OS移除了Ubuntu非常重视的Snap软件包，并新建了官方PPA。可能对于某些用户来说Snap实在是太方便了，但是Snap软件包实在是太大了，并且启动Snap软件也需要多花一些时间，与之相比我更喜欢使用`apt-get install`命令安装我所需要的软件而不是使用snap。
+
+关于Pop!\_OS的介绍也就介绍到这里，我们开始将目光转向今天的主角 macOS。
+
+## macOS
+
+我正在使用的macOS版本是macOS Big Sur。
+
+![About The Mac](/images/2021-09-02-about-the-mac.png)
+
+在使用macOS的过程中，我总是对它期待过高，总是希望我拿到的是一个完美的系统，他不应该有瑕疵，他应该能够满足我生活与工作的所有需要，用着用着我发现我错了。
+
+
+
+#### 安装 iTerm2
+
+身为一个程序员，我不可避免的需要用到虚拟终端，每个系统中一定拥有你特别喜欢的某一个。而在macOS上，有一款可以说是毫无争议最好看的虚拟终端 [iTerm2](https://iterm2.com/index.html)。
+
+[![img](https://iterm2.com/img/logo2x.jpg)](https://iterm2.com/index.html)
+
+我们进入官网下载后就可以将其拖入 Applications 完成安装了。
+
+这样，我终于拥有了一款美观且强大的虚拟终端，虽然这只是很小的一步。
+
+在进行程序安装的时候，不可避免的会用的一些命令行工具，比如 `git`、`clang`、`gcc`，而这些苹果帮你集成在了 Xcode Command Line Tools 中。
+
+#### 安装 Xcode Command Line Tools
+
+苹果把安装 Xcode Command Line Tools 变成一个非常简单的事情，当你键入一下以上的几个命令时，他就会提示你进行安装了。
+
+当然你也可以在虚拟终端上键入`xcode-select --install`开始安装，你将会看到一个询问你是否安装 Xcode Command Line Tools 的提示。
+
+![Install Xcode Command Line Tools](/images/2021-09-02-install-Xcode-Command-Line-Tools.png)
+
+点击 Install 来开始下载与安装过程。
+
+![Install Xcode Command Line Tools Progress](/images/2021-09-02-install-Xcode-Command-Line-Tools-progress.png) 
+
+安装将会耗费不少时间，这取决去你的网速和性能。
+
+![Install Xcode Command Line Tools Done](/images/2021-09-02-install-Xcode-Command-Line-Tools-done.png)
+
+当安装完成后你会看到一条确认信息。
+
+为了验证你已成功安装了Xcode Command Line Tools，你可以键入以下命令：
+
+```sh
+xcode-select -p
+```
+
+如果已经安装成功你应该会看到以下输出：
+
+```sh
+/Library/Developer/CommandLineTools
+```
+
+#### 安装 Homebrew
+
+当你从 Linux 切换到 macOS 的时候，你明显感觉到有些不适应，因为它缺少了一个包管理器，就像Debian系中的apt，RedHat系中的yum，Arch系中的pacman。
+
+为了补全这部分的缺失，我需要自行安装第三方的包管理器。而今天我们要说的就是 macOS 上最流行的包管理器 [Homebrew](https://brew.sh)。
+
+在官网中已经给出了他的安装脚本：
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+你只要运行该脚本就可以完成Homebrew的安装了，但是Homebrew会安装在/usr/local这个目录，并更改其权限，对于单人使用没有任何问题，但是多人使用就有些顾虑。
+
+所以我选择自己安装，具体需要参考官网的[Alternative Installs](https://docs.brew.sh/Installation#alternative-installs)。
+
+我选择安装在我的家目录中，也就是 `/Users/litong` 。
+
+```bash
+mkdir Homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C Homebrew
+```
+
+接下来，你需要将Homebrew的bin文件夹加入到 `PATH` 中，由于使用的是 zsh ，我创建了 `.zshenv` 并在其中添加了以下代码：
+
+```shell
+# Homebrew
+export PATH="/Users/litong/Homebrew/bin:$PATH"
+```
+
+#### 安装 Oh My Zsh
+
+苹果从某个版本之后开始使用zsh作为默认的 sh ，我认为这是一个极其明智的决定。之前在使用Linux我总是需要安装zsh并切换我的登录sh，终于，我不在需要这么做了。当然对于zsh的配置依然不可避免。
+
+在使用虚拟终端的过程中，为了能够更舒服的使用zsh，我习惯安装 [Oh My Zsh](https://ohmyz.sh/) 这个框架。
+
+[![Oh My ZSH logo!](https://ohmyz.sh/img/OMZLogo_BnW.png)](https://ohmyz.sh)
+
+这个框架为我提供了很多的插架和主题，这使得我的终端看起来更有科技感，自动补全等功能也让我用的更加舒心。
+
+你可以通过以下命令进行安装：
+
+```sh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+

@@ -34,7 +34,7 @@ google_analytics: "UA-125970469-2"
 disqus:
   shortname: # Disqus shortname, e.g. "my_disqus_shortname"
 twitter:
-  username: "masonlitong"
+  username: "mason_litong"
 
 # Liquid
 liquid:
@@ -90,10 +90,10 @@ author:
   name: litong
   picture: /images/profile-photo.png
   email: masonlitong@gmail.com
-  twitter: masonlitong
+  twitter: mason_litong
   links:
     - title: Twitter
-      url: https://twitter.com/masonlitong
+      url: https://twitter.com/mason_litong
       icon: fab fa-twitter-square
     - title: Instagram
       url: https://instagram.com/mason_litong
@@ -105,7 +105,7 @@ author:
 # Footer Links
 footer_links:
   - title: Twitter
-    url: https://twitter.com/masonlitong
+    url: https://twitter.com/mason_litong
     icon: fab fa-twitter-square
   - title: Instagram
     url: https://instagram.com/mason_litong
